@@ -1,11 +1,78 @@
-<div class="container">
-    <h1>අපගේ සියලුම භාණ්ඩ</h1>
-    <div class="ad-grid">
-        <div class="ad-card">
-            <img src="https://via.placeholder.com/300x200?text=Camera" alt="Product">
-            <h3>Digital Camera</h3>
-            <p>රු. 85,000</p>
-            <a href="#" class="buy-btn">දැන්ම ගන්න</a>
-        </div>
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-SHOP | All Products</title>
+    <style>
+        /* CSS index.html හා සමාන වේ */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f5f6f7; }
+        header { background: #131921; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo { color: #febd69; font-size: 24px; font-weight: bold; text-decoration: none; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: white; text-decoration: none; font-size: 14px; }
+        .container { padding: 40px 3%; text-align: center; }
+        .product-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 30px; }
+        .product-card { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-card img { width: 100%; height: 160px; object-fit: contain; margin-bottom: 15px; }
+        .price { color: #b12704; font-size: 17px; font-weight: bold; margin-bottom: 15px; }
+        .wa-btn { display: block; padding: 10px; background: #ffd814; color: #111; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 12px; }
+        footer { background: #131921; color: white; padding: 40px 5%; text-align: center; margin-top: 50px; }
+        @media (max-width: 1200px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 992px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .product-grid { grid-template-columns: repeat(1, 1fr); } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">E-SHOP 🛍️</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2 class="section-title" id="status">Loading All Products...</h2>
+        <div class="product-grid" id="product-container"></div>
     </div>
-</div>
+    <footer>
+        <p>© 2026 E-Shopping Sale. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTGISz5pYE5hFlG5rhPbKLK4znC-LjfhBNWjAnv7lSpxoxroih2DE0d0vfoBl3eDIZPd-6PhyUGXjt3/pub?output=csv'; 
+        async function loadAllData() {
+            try {
+                const response = await fetch(sheetURL);
+                const data = await response.text();
+                const rows = data.split('\n').slice(1); 
+                const container = document.getElementById('product-container');
+                let html = '';
+                rows.forEach(row => {
+                    const columns = row.split(','); 
+                    if (columns.length >= 3) {
+                        html += `<div class="product-card">
+                            <div>
+                                <img src="${columns[2].trim()}" alt="${columns[0]}">
+                                <h3 style="font-size:15px;">${columns[0].trim()}</h3>
+                                <p class="price">රු. ${columns[1].trim()}</p>
+                            </div>
+                            <a href="https://wa.me/+94728764615?text=${encodeURIComponent(columns[3] || 'Interested')}" target="_blank" class="wa-btn">WhatsApp Order</a>
+                        </div>`;
+                    }
+                });
+                container.innerHTML = html;
+                document.getElementById('status').innerText = "All Collection";
+            } catch (e) { document.getElementById('status').innerText = "Error!"; }
+        }
+        window.onload = loadAllData;
+    </script>
+</body>
+</html>
