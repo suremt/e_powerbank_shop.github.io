@@ -24,7 +24,13 @@
         .view-all-container { margin-top: 40px; }
         .next-btn { display: inline-block; padding: 15px 40px; background: #232f3e; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; }
         .next-btn:hover { background: #37475a; }
+        
+        /* Footer Styles */
         footer { background: #131921; color: white; padding: 40px 5%; text-align: center; margin-top: 50px; }
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; font-size: 13px; }
+        .footer-links a:hover { color: #febd69; }
+
         @media (max-width: 1200px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
         @media (max-width: 992px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 768px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -45,7 +51,7 @@
     </header>
     <section class="hero">
         <h1>සුවිශේෂී වට්ටම් දැන් ක්‍රියාත්මකයි!</h1>
-        <p>අලුත්ම භාණ්ඩ </p>
+        <p>අලුත්ම භාණ්ඩ මෙතැනින් බලන්න</p>
     </section>
     <div class="container">
         <h2 class="section-title" id="status">Loading...</h2>
@@ -54,7 +60,14 @@
             <a href="products.html" class="next-btn">Next Products (View All) →</a>
         </div>
     </div>
+
     <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms & Conditions</a> |
+            <a href="contact.html">Contact Us</a>
+        </div>
         <p>© 2026 E-Shopping Sale. All Rights Reserved.</p>
     </footer>
 
