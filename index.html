@@ -3,58 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Shopping Sale | Best Deals in Sri Lanka</title>
+    <title>E-SHOP | ඔබේ විශ්වාසනීය වෙළඳසැල</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #f0f2f5; color: #333; line-height: 1.6; }
+        /* මූලික සැකසුම් */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f5f6f7; }
 
-        /* Header & Navigation */
+        /* Navigation Bar */
         header { 
-            background: #131921; 
-            padding: 15px 8%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000;
+            background: #131921; padding: 15px 8%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 1000;
         }
-        .logo { color: #febd69; font-size: 26px; font-weight: bold; text-decoration: none; }
+        .logo { color: #febd69; font-size: 24px; font-weight: bold; text-decoration: none; display: flex; align-items: center; }
         nav ul { list-style: none; display: flex; }
-        nav ul li { margin-left: 25px; }
-        nav ul li a { color: #ffffff; text-decoration: none; font-size: 15px; transition: 0.3s; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: white; text-decoration: none; font-size: 14px; transition: 0.3s; }
         nav ul li a:hover { color: #febd69; }
 
-        /* Banner Section */
+        /* Hero Banner */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1350&q=80');
             background-size: cover; background-position: center;
             height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
         }
+        .hero h1 { font-size: 35px; margin-bottom: 10px; }
+        .hero p { font-size: 16px; opacity: 0.9; }
 
-        /* Container & Titles */
+        /* Product Grid (භාණ්ඩ 3ක් පේළියක) */
         .container { padding: 50px 8%; text-align: center; }
-        .section-title { margin-bottom: 40px; font-size: 28px; color: #232f3e; }
+        .section-title { font-size: 28px; color: #232f3e; margin-bottom: 10px; position: relative; display: inline-block; }
+        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: #febd69; margin: 10px auto; }
 
-        /* Product Grid */
-        .ad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .ad-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.4s; }
-        .ad-card:hover { transform: translateY(-5px); }
-        .ad-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
-        .price { color: #b12704; font-weight: bold; font-size: 20px; margin: 10px 0; }
-        
-        .buy-btn { 
-            display: block; padding: 12px; background: #25d366; color: white; 
-            text-decoration: none; border-radius: 25px; font-weight: bold; transition: 0.3s;
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); /* පේළියකට භාණ්ඩ 3ක් */
+            gap: 30px; 
+            margin-top: 40px; 
         }
-        .buy-btn:hover { background: #128c7e; }
+
+        /* Product Card */
+        .product-card { 
+            background: white; padding: 25px; border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s;
+            text-align: center;
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .product-card img { width: 100%; height: 230px; object-fit: contain; border-radius: 10px; margin-bottom: 20px; background: #f9f9f9; }
+        .product-card h3 { font-size: 18px; color: #333; margin-bottom: 10px; }
+        .price { color: #b12704; font-size: 20px; font-weight: bold; margin-bottom: 20px; }
+        
+        /* WhatsApp Button */
+        .wa-btn { 
+            display: block; padding: 12px; background: #ffd814; color: #111; 
+            text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 13px;
+            transition: 0.3s; border: 1px solid #fcd200;
+        }
+        .wa-btn:hover { background: #f7ca00; }
 
         /* Footer */
         footer { background: #131921; color: white; padding: 40px 8%; text-align: center; margin-top: 50px; }
-        .footer-nav { margin-bottom: 20px; }
-        .footer-nav a { color: #ccc; text-decoration: none; margin: 0 15px; font-size: 14px; }
-        .footer-nav a:hover { color: #febd69; }
-        .copyright { font-size: 12px; color: #888; margin-top: 20px; }
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a { color: #ccc; text-decoration: none; margin: 0 10px; font-size: 13px; }
+        .footer-links a:hover { color: white; }
+
+        /* Responsive (Mobile සඳහා එක පේළියට එකක්) */
+        @media (max-width: 900px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .product-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; }
+            nav ul { margin-top: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -72,37 +93,44 @@
     </header>
 
     <section class="hero">
-        <h1>සුවිශේෂී වට්ටම් දැන් ක්‍රියාත්මකයි!</h1>
-        <p>ඉහළම ගුණාත්මක බවින් යුත් භාණ්ඩ පහසු මිලට.</p>
+        <h1>අද දවසේ විශේෂ දීමනා!</h1>
+        <p>ශ්‍රී ලංකාවේ අඩුම මිලට උසස්ම භාණ්ඩ දැන් ලබාගන්න.</p>
     </section>
 
     <div class="container">
-        <h2 class="section-title">අලුත්ම භාණ්ඩ (New Arrivals)</h2>
-        <div class="ad-grid">
-            <div class="ad-card">
+        <h2 class="section-title">New Arrivals</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80" alt="Watch">
                 <h3>Luxury Smart Watch</h3>
-                <p class="price">රු. 9,500</p>
-                <a href="https://wa.me/94771234567?text=මට මේ Smart Watch එක ගැන විස්තර අවශ්‍යයි" class="buy-btn">WhatsApp Order</a>
+                <p class="price">රු. 9,500.00</p>
+                <a href="https://wa.me/94771234567?text=Luxury Smart Watch එක ගැන දැනගන්න කැමතියි" class="wa-btn">WhatsApp හරහා ඇණවුම් කරන්න</a>
             </div>
-            <div class="ad-card">
+
+            <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80" alt="Headphones">
                 <h3>Wireless Headphones</h3>
-                <p class="price">රු. 12,500</p>
-                <a href="https://wa.me/94771234567?text=මට මේ Headphones එක ගැන විස්තර අවශ්‍යයි" class="buy-btn">WhatsApp Order</a>
+                <p class="price">රු. 12,500.00</p>
+                <a href="https://wa.me/94771234567?text=Wireless Headphones ගැන දැනගන්න කැමතියි" class="wa-btn">WhatsApp හරහා ඇණවුම් කරන්න</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80" alt="Shoes">
+                <h3>Sports Running Shoes</h3>
+                <p class="price">රු. 15,000.00</p>
+                <a href="https://wa.me/94771234567?text=Sports Running Shoes ගැන දැනගන්න කැමතියි" class="wa-btn">WhatsApp හරහා ඇණවුම් කරන්න</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-nav">
+        <div class="footer-links">
             <a href="index.html">මුල් පිටුව</a> | 
-            <a href="privacy.html">පෞද්ගලිකත්ව ප්‍රතිපත්තිය</a> | 
-            <a href="terms.html">සේවා කොන්දේසි</a> | 
-            <a href="contact.html">සම්බන්ධ වන්න</a>
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms & Conditions</a>
         </div>
-        <p>© 2026 E-Shopping Sale. සියලුම හිමිකම් ඇවිරිණි.</p>
-        <p class="copyright">Design with ❤️ for your business.</p>
+        <p>© 2026 E-Shopping Sale. All Rights Reserved.</p>
     </footer>
 
 </body>
